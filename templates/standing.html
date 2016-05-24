@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Group Standing for {{ team }}</title>
+        <style>
+        table, th, td {
+            border: 1px solid black;
+            text-align: center;
+        }
+        body {
+            text-align: center;
+        }
+
+        #container {
+            margin: 0 auto;
+            width: xxxpx;
+            text-align: left;
+        }
+        a {
+            font-size: x-large;
+            color: darkblue;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<h1>Your current standing</h1>
+{% if message %}
+<h3>You have successfully allocated your money!</h3>
+    <br><br><br>
+{% endif %}
+{% load humanize %}
+<table id="container" style="width:40%">
+    <tr>
+        <th>Interesting</th>
+        <th>Completeness</th>
+        <th>Gizmos</th>
+        <th>Total</th>
+    </tr>
+    <tr>
+        <td>${{ interesting|floatformat:0|intcomma }}</td>
+        <td>${{ complete|floatformat:0|intcomma }}</td>
+        <td>${{ gizmos|floatformat:0|intcomma }}</td>
+        <td>${{ total|floatformat:0|intcomma }}</td>
+    </tr>
+</table>
+<br><br><br>
+<a href="{% url 'welcome' %}">Home</a>
+</body>
+</html>

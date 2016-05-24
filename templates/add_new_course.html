@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Course</title>
+</head>
+<body>
+<h1>Add a course</h1>
+<form action="{% url 'create_course' %}" method="get">
+    Course number: <input type="number" name="cnum"><br>
+    Course title: <input type="text" name="cname"><br>
+    Course long name: <input type="text" name="clname"><br>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

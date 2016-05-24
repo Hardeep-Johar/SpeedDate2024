@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Hello {{ user }}!<br>
+{% if course_list %}
+Select a course from the following list:<br>
+<form name="courses" action="{% url 'course_control' %}" method="get">
+    <select name="course_choice" size="5">
+        {% for course in course_list %}
+            <option value="{{ course.course_number }}">{{ course.course_title }}</option>
+        {% endfor %}
+    </select><br>
+    <input name="submit" type="submit" value="Submit">
+
+</form>
+{% else %}
+No courses found.<br>
+{% endif %}
+
+<a href="{% url 'add_course' %}">Add a course?</a>
+</body>
+</html>

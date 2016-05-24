@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Speed Date</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        #container {
+            margin: 0 auto;
+            width: xxxpx;
+            text-align: left;
+        }
+        #green {
+            color: green;
+        }
+        #lightblue {
+            color: lightblue;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<h1>{{ course.course_title }}</h1>
+<h3>Welcome <span id="green">{{ group.group_name }}</span></h3>
+<h3>You are: <span id="lightblue">{{ group.group_members }}</span></h3>
+<p>
+    <a href="{% url 'view_rotation' %}">View your rotation</a>
+    <p>
+    <a href="{% url 'invest' %}">Invest your money</a>
+    <p>
+    <a href="{% url 'view_standing' %}">View your standing</a>
+    <p>
+    <a href="{% url 'notes' %}">Record your notes</a>
+    <p>
+    <a href="{% url 'view_all_notes' %}">View all your notes</a>
+</p>
+</body>
+</html>

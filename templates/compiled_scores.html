@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compiled Results</title>
+        <style>
+        thead {color:green;}
+        tbody {color:blue;}
+        tfoot {color:red;}
+        table, th, td {
+            border: 1px solid black;
+            text-align: center;
+            table-layout: fixed;
+            width: 200px;
+        }
+        body {
+            text-align: center;
+        }
+
+        #container {
+            margin: 0 auto;
+            width: xxxpx;
+            text-align: left;
+        }
+        #buttoncolor {
+            color: darkred;
+            background-color: lightblue;
+        }
+        h1 {
+            color: darkred
+        }
+        h3 {
+            color: red;
+            font-size: x-large;
+        }
+        td {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<h1>{{ course.course_long_name }}</h1>
+
+<table id="container">
+
+    <thead>
+        <tr>
+            <th>Team</th>
+            <th>Interestingness</th>
+            <th>Completeness</th>
+            <th>Gizmos</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    {% load humanize %}
+    {% for result in results %}
+
+        <tr>
+            <td>{{ result.group }}</td>
+            <td>${{ result.interesting_dollars|floatformat:0|intcomma }}</td>
+            <td>${{ result.completeness_dollars|floatformat:0|intcomma }}</td>
+            <td>${{ result.gizmos_dollars|floatformat:0|intcomma }}</td>
+            <td>${{ result.total_dollars|floatformat:0|intcomma }}</td>
+        </tr>
+    {% endfor %}
+    <tfoot>
+        <tr>
+            <td>Total Dollars Allocated</td>
+            <td>${{ tinteresting|floatformat:0|intcomma }}</td>
+            <td>${{ tcompleteness|floatformat:0|intcomma }}</td>
+            <td>${{ tgizmos|floatformat:0|intcomma }}</td>
+            <td>${{ ttotal|floatformat:0|intcomma }}</td>
+        </tr>
+        </tfoot>
+</table>
+
+</body>
+</html>

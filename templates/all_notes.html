@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Your Notes</title>
+        <style>
+        thead {color:green;}
+    tbody {color:blue;}
+    tfoot {color:red;}
+        table, th, td {
+            border: 1px solid black;
+            text-align: center;
+        }
+        body {
+            text-align: center;
+        }
+
+        #container {
+            margin: 0 auto;
+            width: xxxpx;
+            text-align: left;
+        }
+        #buttoncolor {
+            color: darkred;
+            background-color: lightblue;
+        }
+        h3 {
+            color: red;
+            font-size: x-large;
+        }
+        #darkgreen {
+            color: darkgreen;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<h1>Hello <span id="darkgreen">{{ this_group }}</span>!</h1>
+<h3>These are the notes your wrote</h3>
+    <table id="container" style="width:50%">
+
+<thead>
+        <tr>
+            <th>Group</th>
+            <th>Notes</th>
+        </tr>
+        </thead>
+        {% for note in notes_list  %}
+        <tr>
+        <td>{{ note.0 }}</td>
+        <td>{{ note.1 }}</td>
+        </tr><br>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Speed Date Rotation</title>
+        <style>
+        table, th, td {
+            border: 1px solid black;
+            text-align: center;
+        }
+        body {
+            text-align: center;
+        }
+
+        #container {
+            margin: 0 auto;
+            width: xxxpx;
+            text-align: left;
+        }
+        h1 {
+            color: darkgreen;
+        }
+        a {
+            font-size: x-large;
+            color: darkblue;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Rotation for {{ team }}</h1>
+<table id="container" style="width: 70%">
+    <tr>
+        <th>Round</th>
+        <th>Table</th>
+        <th>First Half Demo-ing group</th>
+        <th>Second Half Demo-ing group</th>
+    </tr>
+    {% for line in rotation_list %}
+        <tr>
+        <td>{{ line.round }}</td>
+        <td>{{ line.table }}</td>
+        <td>{{ line.first_team }}</td>
+        <td>{{ line.other_team }}</td>
+        </tr>
+
+{% endfor %}
+</table>
+
+<a href="{% url 'welcome' %}">Home</a>
+<p>
+    <b>Notes</b>
+    <p>
+    1. A None in a round indicates you're free for that round<br>
+    2. Prof indicates that you need to sell your app to the professor
+</p>
+</body>
+</html>

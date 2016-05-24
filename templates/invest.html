@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invest Your Money!</title>
+    <style>
+        thead {color:green;}
+    tbody {color:blue;}
+    tfoot {color:red;}
+        table, th, td {
+            border: 1px solid black;
+            text-align: center;
+        }
+        body {
+            text-align: center;
+        }
+
+        #container {
+            margin: 0 auto;
+            width: xxxpx;
+            text-align: left;
+        }
+        #buttoncolor {
+            color: darkred;
+            background-color: lightblue;
+        }
+        h3 {
+            color: red;
+            font-size: x-large;
+        }
+        #darkgreen {
+            color: darkgreen;
+        }
+
+    </style>
+</head>
+<body>
+{% load humanize %} 
+<div id="container"></div>
+<h1>{{ team }} Invest Your Dollars!</h1>
+<h4 id="darkgreen container">Total investable dollars = ${{ total|floatformat:0|intcomma }} for each column</h4>
+
+{% if errors %}
+<h3> ERROR: The total investment must add up to ${{ total|floatformat:0|intcomma }}
+    in each column!</h3>
+{% endif %}
+
+<form action="do_invest" method="get">
+    <table id="container" style="width:50%">
+        <thead>
+        <tr>
+            <th>Team</th>
+            <th>Interestingness</th>
+            <th>Completeness</th>
+            <th>Gizmos</th>
+        </tr>
+        </thead>
+        {% for dollar in dollars %}
+            <tr>
+            <td>{{ dollar.group_2 }}</td>
+            <td><input type="number" name="{{ dollar.group_2 }}I" value={{ dollar.interesting_dollars }}></td>
+            <td><input type="number" name="{{ dollar.group_2 }}C" value={{ dollar.completeness_dollars }}></td>
+            <td><input type="number" name ="{{ dollar.group_2 }}G" value={{ dollar.gizmos_dollars }}></td>
+
+            </tr>
+        {% endfor %}
+        <tfoot>
+        <tr>
+            <td>Total Dollars Allocated</td>
+            <td>{{ interesting_totals|floatformat:0|intcomma }}</td>
+            <td>{{ completeness_totals|floatformat:0|intcomma }}</td>
+            <td>{{ gizmos_totals|floatformat:0|intcomma }}</td>
+        </tr>
+        </tfoot>
+    </table>
+    <br><br>
+    <input id="buttoncolor" type="submit" value="Refresh totals" name="refresh">
+    <input id="buttoncolor" type="submit" value="Submit allocation" name="submit">
+    <input id="buttoncolor" type="submit" value="Reset everything" name="reset">
+
+</form>
+<p id="darkgreen container">You must invest all your dollars</p>
+</body>
+</html>

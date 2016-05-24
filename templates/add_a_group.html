@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Add a group to {{ course.course_title }}</h1>
+<form action="{% url 'create_group' %}" method="get">
+    Group number: {{ group_number }}<br>
+    App name: <input type="text" name="app_name">
+    Members: <input type="textarea" name="members">
+    <input type="hidden" name="group_number" value={{ group_number }}>
+    <input type="hidden" name="course" value={{ course.course_number }}>
+    <input name = "more" type="submit" value="Submit and Add Another">
+    <input name = "done" type="submit" value="Return to Course Admin">
+
+
+</form>
+</body>
+</html>

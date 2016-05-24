@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        thead {color:green;}
+    tbody {color:blue;}
+    tfoot {color:red;}
+        table, th, td {
+            border: 1px solid black;
+            text-align: center;
+        }
+        body {
+            text-align: center;
+        }
+
+        #container {
+            margin: 0 auto;
+            width: xxxpx;
+            text-align: left;
+        }
+        #buttoncolor {
+            color: darkred;
+            background-color: lightblue;
+        }
+        h3 {
+            color: red;
+            font-size: x-large;
+        }
+
+    </style>
+</head>
+<body>
+<h1>{{ course.course_title }}</h1>
+{% if message %}
+<h3>{{ message }}</h3>
+{% endif %}
+<form action="{% url 'do_course_admin_actions' %}" method="get">
+    {% if group_list %}
+        <select name="group_choice" size="10">
+            {% for group in group_list %}
+                <option value={{ group.group_number }}>{{ group.group_name }}</option>
+            {% endfor %}
+        </select>
+        <br><br><br>
+        <input id="buttoncolor" name="edit" type="submit" value="Edit selection">
+    {% endif %}
+    <input id="buttoncolor" name="course" value="{{ course.course_number }}" type="hidden"><br>
+    <input id="buttoncolor" name="add" type="submit" value="Add New Group"><br>
+    <input id="buttoncolor" name="generate" type="submit" value="Generate rotation"><br>
+    <input id="buttoncolor" name="freeze" type="submit" value="Freeze rotation"><br>
+    <input id="buttoncolor" name="print" type="submit" value="Print rotation"><br>
+    <input id="buttoncolor" name="compile" type="submit" value="Compile results"><br>
+    <input id="buttoncolor" name="allnotes" type="submit" value="View all notes">
+</form>
+
+</body>
+</html>

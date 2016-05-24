@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Note</title>
+    <style>
+        #red_color {
+            color: red;
+        }
+        #buttoncolor {
+            color: darkred;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+<p>Edit your notes for <span id="red_color">{{ group }}</span></p>
+<p>Members: {{ team }}</p>
+<form action="{% url 'process_note' %}" method="get">
+    <textarea name="note" rows="10" cols="100">{{ note }}</textarea>
+
+    <input type="hidden" value="{{ group }}" name="group2"><br>
+    <input id="buttoncolor" type="submit" value="Save note" name="save">
+    <input id="buttoncolor" type="submit" value="Exit without saving" name="exit">
+</form>
+</body>
+</html>

@@ -1,15 +1,17 @@
 container_commands:
   01_migrate:
-	command: "python manage.py migrate"
-    	leader_only: true
+    command: "python manage.py migrate"
+    leader_only: true
   02_collectstatic:
-	command: "python manage.py collectstatic --noinput"
+    command: "python manage.py collectstatic --noinput"
+
 option_settings:
   "aws:elasticbeanstalk:application:environment":
-    DJANGO_SETTINGS_MODULE: "SpeedDate.settings"
+    DJANGO_SETTINGS_MODULE: "mysite.settings"
     PYTHONPATH: "$PYTHONPATH"
   "aws:elasticbeanstalk:container:python":
-    WSGIPath: "SpeedDate/wsgi.py"
+    WSGIPath: "mysite/wsgi.py"
+
 packages:
   yum:
     postgresql93-devel: []
